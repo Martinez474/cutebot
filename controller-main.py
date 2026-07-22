@@ -5,7 +5,12 @@ radio.on()
 radio.config(group=7)
 
 while True:
-    if button_a.is_pressed() and button_b.is_pressed():
+    if pin_logo.is_touched():
+        radio.send("dance")
+        display.show(Image.HAPPY)
+        sleep(500)
+    
+    elif button_a.is_pressed() and button_b.is_pressed():
         radio.send("forward")
         display.show(Image.ARROW_N)
 
