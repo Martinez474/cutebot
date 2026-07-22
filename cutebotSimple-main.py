@@ -83,20 +83,6 @@ class CUTEBOT(object):
 ct = CUTEBOT()
 
 BASE_SPEED = 25
-SLOW_SPEED = 5
-SEARCH_SPEED = 18
-
-# After 1 second of only white, stop searching and move forward.
-WHITE_FORWARD_DELAY = 1000
-
-# Remembers where the black line was last seen.
-# -1 = left
-#  1 = right
-#  0 = centered / unknown
-last_seen = 0
-
-# Stores when the robot first started seeing only white.
-white_start_time = None
 
 # Start lights: stopped = both red
 ct.set_car_light(left_light, 255, 0, 0)
@@ -104,10 +90,8 @@ ct.set_car_light(right_light, 255, 0, 0)
 
 
 while True:
-    
-
     ct.set_motors_speed(BASE_SPEED, BASE_SPEED)
-    sleep(100)
+    sleep(1000)
     ct.stop()
 
-    sleep(20)
+    sleep(1000)
