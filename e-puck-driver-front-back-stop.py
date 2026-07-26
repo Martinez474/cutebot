@@ -10,13 +10,21 @@ robot = Robot()
 keyboard = Keyboard()
 keyboard.enable(TIME_STEP)
 
-
+#front sensors
 sensor0 = robot.getDevice("ps0")
 sensor7 = robot.getDevice("ps7")
 
 sensor0.enable(TIME_STEP)
 sensor7.enable(TIME_STEP)
 
+#back sensors
+sensor3 = robot.getDevice("ps3")
+sensor4 = robot.getDevice("ps4")
+
+sensor3.enable(TIME_STEP)
+sensor4.enable(TIME_STEP)
+
+#motors
 left_motor = robot.getDevice("left wheel motor")
 right_motor = robot.getDevice("right wheel motor")
 
@@ -44,7 +52,7 @@ while robot.step(TIME_STEP) != -1:
         left_speed = MAX_SPEED
         right_speed = MAX_SPEED
 
-    elif key == Keyboard.DOWN:
+    elif key == Keyboard.DOWN and sensor3.getValue() < THRESHOLD and sensor4.getValue() < THRESHOLD:
         left_speed = -MAX_SPEED
         right_speed = -MAX_SPEED
 
