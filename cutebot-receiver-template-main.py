@@ -45,6 +45,7 @@ class CUTEBOT(object):
 
         i2c.write(CUTEBOT_ADDR, bytearray([light, R, G, B]))
 
+    # returns distance in centimers using the cutebots ultrasonic sensors
     def get_distance(self, unit: int = 0):
         self.__pin_e.read_digital()
         self.__pin_t.write_digital(1)
@@ -95,6 +96,7 @@ TURN_SPEED = 25
 ct.set_car_light(left_light, 255, 0, 0)
 ct.set_car_light(right_light, 255, 0, 0)
 ct.stop()
+ct.set_motors_speed(0, 0)  # same as stopping the car
 
 while True:
     message = radio.receive()
@@ -112,4 +114,3 @@ while True:
         display.show(Image.DIAMOND)
 
     sleep(20)
-
