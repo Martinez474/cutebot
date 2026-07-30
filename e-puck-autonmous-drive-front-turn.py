@@ -47,11 +47,12 @@ FRONT_THRESHOLD = 90
 #this is needed to due to the complexity of sensors during movement
 BLACK_THRESHOLD = 670 #Black threshold
 WHITE_THRESHOLD = 700 #White threshold
+
+#not needed to understand function too complex (code below this)
 gray_count = 0
 
 def is_gray(value):
     global gray_count
-    
 
     if BLACK_THRESHOLD < value < WHITE_THRESHOLD:
         gray_count += 1
@@ -59,29 +60,30 @@ def is_gray(value):
         gray_count = 0
     return gray_count >= 4
 
-
+#not needed to understand function too complex (code above this)
 
 while robot.step(TIME_STEP) != -1:
 
     proximity_sensor0_distance = proximity_sensor0.getValue()
     proximity_sensor7_distance = proximity_sensor7.getValue()
     
-
+    #move forward
     left_motor.setVelocity(MAX_SPEED)
     right_motor.setVelocity(MAX_SPEED)
 
+    #We found the goal now we stop
     if is_gray(ground_sensor.getValue()):
         left_motor.setVelocity(0)
         right_motor.setVelocity(0)
         break
     
-    
+    #Check to see if either of our front sensors see a wall and if so
+    #follow our movement routine
     if proximity_sensor0_distance > FRONT_THRESHOLD or proximity_sensor7_distance > FRONT_THRESHOLD:
         #stop quickly
         left_motor.setVelocity(0)
         right_motor.setVelocity(0)
         robot.step(100)
-    
     
         # Wall in front: turn right.
         left_motor.setVelocity(TURN_SPEED)
