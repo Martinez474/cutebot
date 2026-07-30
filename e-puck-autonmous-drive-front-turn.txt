@@ -1,0 +1,13 @@
+Goal: Reach the gray floor
+Problem: Obstacle in the way
+
+First we initialize all the sensors we will need
+This includes our two front sensors and our center ground sensor
+
+Then in our while loop
+If we see gray floor we stop
+
+If we don't see gray floor we keep exploring the area.
+This can be done by moving forward.
+However if we see an obstacle we will need to handle that.
+This can be done by turning.
