@@ -11,3 +11,7 @@ If we don't see gray floor we keep exploring the area.
 This can be done by moving forward.
 However if we see an obstacle we will need to handle that.
 This can be done by turning.
+
+Aka
+if we don't see a wall in front of us we move forward and
+if we do see a wall in front of us we turn.
