@@ -90,11 +90,11 @@ ct.set_car_light(right_light, 255, 0, 0)
 ct.stop()
 
 while True:
-    distance = ct.get_distance() #distance is returned in centimeters (integers only)
+    distance = ct.get_distance()
 
     if distance is not None and distance < 15:
         # Wall is less than 15 cm away
-        ct.stop()
+        ct.set_motors_speed(-25, -25)
         display.show(Image.NO)
     else:
         ct.set_motors_speed(25, 25)
